@@ -28,8 +28,8 @@ public class RegisterYourAccount {
 		cityEle.sendKeys("Ontario");
 		WebElement countryEle=driver.findElement(By.xpath("//input[@id='state']"));
 		countryEle.sendKeys("canada");
-		WebElement stateEle=driver.findElement(By.xpath("//select[@id='country']"));
-		stateEle.sendKeys("Ontario");
+//		WebElement stateEle=driver.findElement(By.xpath("//select[@id='country']"));
+//		stateEle.sendKeys("Ontario");
 		WebElement phoneEle=driver.findElement(By.xpath("//input[@id='phone']"));
 		phoneEle.sendKeys("9059933467");
 		WebElement eMailEle=driver.findElement(By.xpath("//input[@id='email']"));
