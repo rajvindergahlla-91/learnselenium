@@ -5,6 +5,7 @@ import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -19,7 +20,7 @@ public class RegistrationFormTest {
 	public void registFormTest() throws InterruptedException {
 
 		WebDriver driver = new ChromeDriver();
-		driver.manage().window().fullscreen();
+		driver.manage().window().maximize();
 		Faker fakename = new Faker();
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -80,14 +81,18 @@ public class RegistrationFormTest {
 		// dd.selectByVisibleText("Cuba");
 
 		WebElement phoneEle = driver.findElement(By.xpath("//input[@id='phone']"));
-		phoneEle.sendKeys(fakename.phoneNumber().cellPhone());
+		phoneEle.sendKeys(fakename.number().digits(10) );
 
 		WebElement eMailEle = driver.findElement(By.xpath("//input[@id='email']"));
 		eMailEle.sendKeys(fakename.internet().emailAddress());
-
+		
+		
 		WebElement passwordEle = driver.findElement(By.xpath("//input[@id='password']"));
 		passwordEle.sendKeys(fakename.credentials().password());
-
+		
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+		
 		Thread.sleep(5000);
 		WebElement eyeIconEle = driver.findElement(By.xpath("//i[@class='fa fa-eye']"));
 		eyeIconEle.click();
