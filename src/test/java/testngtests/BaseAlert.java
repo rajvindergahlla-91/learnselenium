@@ -18,7 +18,7 @@ public class BaseAlert {
 		
 	    System.out.println("I am in before Method");
 		driver = new ChromeDriver();
-		driver.navigate().to("https://the-internet.herokuapp.com/");
+		//driver.navigate().to("https://the-internet.herokuapp.com/");
 		wait = new WebDriverWait(driver,Duration.ofSeconds(10));
 	}
 	

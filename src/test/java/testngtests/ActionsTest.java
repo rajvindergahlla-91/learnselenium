@@ -1,6 +1,6 @@
 package testngtests;
 
-import java.time.Duration;
+//import java.time.Duration;
 
 //import java.time.Duration;
 
@@ -51,39 +51,63 @@ public void DragAndDropActionsTest()
 	@Test
 	public void hoverAndSelectTest()
 	{
-		driver.navigate().to("https://practice.expandtesting.com/hovers#google_vignette");
+		driver.navigate().to("https://the-internet.herokuapp.com/");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Hovers']"))).click();
+		
+		WebElement imgEle =wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//img[@src='/img/avatar-blank.jpg'])[1]")));
+	    
+		Actions act = new Actions(driver);
+		act.moveToElement(imgEle).perform();
+		
+		WebElement textEle =wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@href='/users/1']")));
+           act.moveToElement(textEle)	
+           .click()
+           .perform();
+           
+           WebElement headTextEle =wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[text()='Not Found']")));
+           String heading=headTextEle.getText();
+           Assert.assertEquals(heading,"Not Found");
+	}
+
+		@Test
+		public void hoverTest()
+		{
+		
+		driver.navigate().to("https://practice.expandtesting.com/hovers");
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollTo(0, document.body.scrollHeight/4)");
 		
 		 WebElement picEle =wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//img[@data-testid='img-user-1']")));
-		 picEle.click();
+		
+		 
+		 Actions act= new Actions(driver);
+		 act.moveToElement(picEle).perform();
+		 
+		WebElement optionEle =wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(@href,'/users/1')]")));
+		act.moveToElement(optionEle).click().perform();
+	
+		 WebElement headerText= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[text()='Welcome user1 ']")));
+		 String heading=headerText.getText();
+		 Assert.assertTrue(heading.contains("Welcome user1"));
+		}
+            @Test
+		    public void testHoverAction()
+		    {
+		    	
+		    
+		driver.navigate().to("https://www.vinsguru.com/selenium-webdriver-practice-page/");
+		 WebElement devEle =wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()='Development']")));
 		 
 		 Actions act= new Actions(driver);
 		 
 		 
-		act.moveToElement(picEle).pause(Duration.ofSeconds(3)).perform();
-		WebElement optionEle =wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(@href,'/users/1')]")));
-		act.moveToElement(optionEle).pause(Duration.ofSeconds(3)).click().perform();
-		optionEle.click();
+		act.moveToElement(devEle).perform();
 		
-		 WebElement headerText= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[text()='Welcome user1 ']")));
+		WebElement optionEle =wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Spring Boot']")));
+		act.moveToElement(optionEle).click().perform();
+		
+		 WebElement headerText= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[@class='entry-title']")));
 		 String heading=headerText.getText();
-		 Assert.assertTrue(heading.contains("Welcome user1"));
-		
-		    
-//		driver.navigate().to("https://www.vinsguru.com/selenium-webdriver-practice-page/");
-//		 WebElement devEle =wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()='Development']")));
-//		 
-//		 Actions act= new Actions(driver);
-//		 
-//		 
-//		act.moveToElement(devEle).perform();
-//		WebElement optionEle =wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Spring Boot']")));
-//		act.moveToElement(optionEle).click().perform();
-//		
-//		 WebElement headerText= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[@class='entry-title']")));
-//		 String heading=headerText.getText();
-//		 Assert.assertTrue(heading.contains("Spring Boot"));
-//		
-	}
+		 Assert.assertTrue(heading.contains("Spring Boot"));
+		    }
 }
