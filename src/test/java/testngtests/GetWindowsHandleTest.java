@@ -5,6 +5,7 @@ import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -21,6 +22,7 @@ public class GetWindowsHandleTest {
 	    By winButton = By.id("windowButton");
 	    By msgWin = By.id("messageWindowButton");
 	    By head = By.id("sampleHeading");
+	    By msgWindow =By.xpath("//body[contains(text(),'Knowledge')]");
 		    
 
 		        WebDriver driver = new ChromeDriver();
@@ -34,54 +36,61 @@ public class GetWindowsHandleTest {
 
 		        // Open all windows
 		        wait.until(ExpectedConditions.elementToBeClickable(tabButton)).click();
-		        wait.until(ExpectedConditions.elementToBeClickable(winButton)).click();
-		        wait.until(ExpectedConditions.elementToBeClickable(msgWin)).click();
+	            
+//		        wait.until(ExpectedConditions.elementToBeClickable(msgWin)).click();
 
 		        Set<String> allHandles = driver.getWindowHandles();
 
 		        String tabHandle = null;
 		        String windowHandle = null;
-		        String msgHandle = null;
-
-		        // Identify all handles
-		        for (String handle : allHandles) {
-
-		            if (handle.equals(parentHandle)) continue;
-
-		            driver.switchTo().window(handle);
-
-		            String url = driver.getCurrentUrl();
-
-		            if (url.contains("browser-windows")) {
-		                // Tab window
-		                tabHandle = handle;
-		                System.out.println("Tab Handle: " + tabHandle);
-
-		                String text = wait.until(ExpectedConditions.visibilityOfElementLocated(head)).getText();
-		                Assert.assertEquals(text, "This is a sample page");
-
-		            } else if (url.contains("sample")) {
-		                // Window popup
-		                windowHandle = handle;
-		                System.out.println("Window Handle: " + windowHandle);
-
-		                String text = wait.until(ExpectedConditions.visibilityOfElementLocated(head)).getText();
-		                Assert.assertEquals(text, "This is a sample page");
-
-		            } else {
-		                // Message window (no DOM text usually)
-		                msgHandle = handle;
-		                System.out.println("Message Window Handle: " + msgHandle);
-		            }
-		        }
-
-		        // Switch back to parent at end
-		        driver.switchTo().window(parentHandle);
-
-		        driver.quit();
-		    }
-
+	            String msgHandle = null;
+		        
+              for(String handle:allHandles)
+            	  if(!handle.equals(parentHandle)) {
+            		  tabHandle=handle;
+              driver.switchTo().window(tabHandle);
+              System.out.println("tab handle is : " + tabHandle);
+            	  }
+             WebElement tab = wait.until(ExpectedConditions.visibilityOfElementLocated(head));
+             String tabMsg= tab.getText();
+              
+             Assert.assertEquals(tabMsg,"This is a sample page");
+             
+             driver.switchTo().window(parentHandle);
+             
+             wait.until(ExpectedConditions.elementToBeClickable(winButton)).click();
+             
+             Set<String> handles =driver.getWindowHandles();
+             for(String control: handles)
+            	 if(!control.equals(parentHandle) && !control.equals(tabHandle))
+            	 {
+            		 windowHandle =control;
+            		 driver.switchTo().window(windowHandle);
+            		 System.out.println("window handle is :"+ windowHandle);
+            	 }
+             
+            WebElement windowHead= wait.until(ExpectedConditions.visibilityOfElementLocated(head));
+            String windowMsg= windowHead.getText();
+            Assert.assertEquals(windowMsg,"This is a sample page");
+            
+            driver.switchTo().window(parentHandle);
+            
+             wait.until(ExpectedConditions.visibilityOfElementLocated(msgWin)).click();
+             
+             Set<String> totalHandles=driver.getWindowHandles();
+             for(String hand:totalHandles)
+            	 if(!hand.equals(parentHandle) && !hand.equals(tabHandle) && !hand.equals(windowHandle))
+            	 {
+            		 msgHandle=hand;
+            		 driver.switchTo().window(msgHandle);
+            		 System.out.println("msg handle is :"+ msgHandle);
+	}
+//            WebElement msg = wait.until(ExpectedConditions.visibilityOfElementLocated(msgWindow));
+//            String msgText= msg.getText();
+//            Assert.assertTrue(msgText.contains("Knowledge"));
+//	
+}
 }
 
-		
+		       
 
