@@ -17,7 +17,7 @@ public class LanguageFilterTest {
 	public void languageJavaTest()
 	{
 		By java =By.xpath("//legend[text()='Language']//following::label[text()=' Java']");
-		By javaListOptions=By.xpath("//table//th[@id='col_lang']/following::td[text()='Java']");
+		By javaListOptions=By.xpath("//table//tr[not(contains(@style, 'display: none'))]/td[3]");
 		
 		WebDriver driver = new ChromeDriver();
 	    driver.navigate().to("https://practicetestautomation.com/practice-test-table/");
@@ -49,6 +49,79 @@ public class LanguageFilterTest {
 	@Test
  public void levelBeginnersTest()
  {
- 
+		By intermediateOption =By.xpath("//legend[text()='Level']/following::label[text()=' Intermediate']");
+		By advancedOption =By.xpath("//legend[text()='Level']/following::label[text()=' Advanced']");
+		By beginnerListOptions=By.xpath("//table//tr[not(contains(@style, 'display: none'))]/td[4]");
+		
+		
+		WebDriver driver = new ChromeDriver();
+	    driver.navigate().to("https://practicetestautomation.com/practice-test-table/");
+	    WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+	    wait.until(ExpectedConditions.elementToBeClickable(intermediateOption)).click();
+	    wait.until(ExpectedConditions.elementToBeClickable(advancedOption)).click();
+	   List<WebElement> beginnersList= wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy( beginnerListOptions));
+	   
+	   for(WebElement list : beginnersList )
+	   {
+		   String listOps =list.getText();
+		   Assert.assertEquals(listOps,"Beginner");
+	   }
+	System.out.println("only beginner level is displayed in table");
+}
+	@Test
+	public void minEnrollmentTest()
+	{
+		
+		By dropDown=By.xpath("//legend[text()='Min enrollments']/following::div[@id='enrollDropdown']");
+		By enrollOps=By.xpath("//table//tr[not(contains(@style, 'display: none'))]/td[5]");
+		
+		
+		WebDriver driver = new ChromeDriver();
+	    driver.navigate().to("https://practicetestautomation.com/practice-test-table/");
+	    WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+	    
+	    wait.until(ExpectedConditions.elementToBeClickable(dropDown)).click();
+	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@class='dropdown-menu']//li[text()='10,000+']"))).click();
+	    List<WebElement> list =wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(enrollOps));
+	    
+	    for(WebElement eList: list)
+	    {
+	    	String enrollList =eList.getText();
+	    	Integer value = Integer.valueOf(enrollList);
+			Assert.assertTrue(value >= 10000);
+	    	
+	    }
+	    System.out.println("enrollments greater than 10000 are present only");
+	    
+	}
 	
-}}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
