@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -133,4 +134,96 @@ public class AutomationCourseTest {
 	
 	
 }
+	@Test
+	public void noResultsStateTest()
+	{
+		By pythonOp=By.xpath("//legend[text()='Language']//following-sibling::label[3]");
+		By beginner =By.xpath("//legend[text()='Level']/following-sibling::label[1]");
+		By noData=By.xpath("//div[@id='noData']");
+		
+		
+		WebDriver driver = new ChromeDriver();
+		driver.navigate().to("https://practicetestautomation.com/practice-test-table/");
+		WebDriverWait wait= new WebDriverWait(driver,Duration.ofSeconds(10));
+		
+		wait.until(ExpectedConditions.elementToBeClickable(pythonOp)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(beginner)).click();
+	    WebElement text =wait.until(ExpectedConditions.visibilityOfElementLocated(noData));
+	    String textMsg=text.getText();
+	    
+	    Assert.assertTrue(textMsg.contains("No"));
+	    System.out.println("no matching courses for this combination");
+	}	
+	@Test
+	public void resetButtonBehaviour()
+	{
+		
+		By java =By.xpath("//legend[text()='Language']//following::label[text()=' Java']");
+		By resetButton=By.xpath("//button[text()='Reset']");
+		By anyCheckbox=By.xpath("//legend[text()='Language']/following-sibling::label[' Any']/input[@checked]");
+		By allLevelCheckBox=By.xpath("//legend[text()='Level']/following-sibling::label/input[@checked]");
+		By enrollAny=By.xpath("//div[@class='dropdown-button']/span");
+		By rows= By.xpath("//table/tbody/tr");
+		
+		
+		WebDriver driver = new ChromeDriver();
+		driver.navigate().to("https://practicetestautomation.com/practice-test-table/");
+		WebDriverWait wait= new WebDriverWait(driver,Duration.ofSeconds(10));
+	
+		wait.until(ExpectedConditions.elementToBeClickable(java)).click();
+	    WebElement buttonText=wait.until(ExpectedConditions.visibilityOfElementLocated(resetButton));
+	    String heading =buttonText.getText();
+	    
+	    Assert.assertEquals(heading,"Reset");
+	    System.out.println("Reset button is visible");
+	    
+	    wait.until(ExpectedConditions.elementToBeClickable(resetButton)).click();
+	    
+	    WebElement checkBox=wait.until(ExpectedConditions.visibilityOfElementLocated(anyCheckbox));
+	    boolean selected=checkBox.isSelected();
+	     Assert.assertTrue(selected);
+	     System.out.println("'Any' checkbox under Language is selected");
+	     
+	     WebElement allCheckBox=wait.until(ExpectedConditions.visibilityOfElementLocated(allLevelCheckBox));
+	     boolean Tr=allCheckBox.isSelected();
+	     
+	     Assert.assertTrue(Tr);
+	     System.out.println("All the checkbox under level are selected");
+	     
+	     WebElement anyField=wait.until(ExpectedConditions.visibilityOfElementLocated(enrollAny));
+	     String textOfField=anyField.getText();
+	
+	     Assert.assertEquals(textOfField, "Any");
+	     System.out.println("'Any' field is visible under enrollment");
+	     
+	    boolean truee= wait.until(ExpectedConditions.invisibilityOfElementLocated(resetButton));
+	    Assert.assertTrue(truee);
+	    System.out.println("reset button is hidden");
+	     
+	    
+		
+		  List<WebElement>allRows=wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(rows)); 
+		  boolean yes= allRows.stream().allMatch(WebElement::isDisplayed);
+		  
+	    Assert.assertTrue(yes);
+	    System.out.println("all rows are visible in table");
+	     
+	 }	
+	@Test
+	public void sortByEnrollmentsTest()
+	{
+		By dropdown=By.xpath("//select[@id='sortBy']");
+		By enrollColoumn=By.xpath("//table/tbody/tr/td[5]");
+		
+		WebDriver driver = new ChromeDriver();
+		driver.navigate().to("https://practicetestautomation.com/practice-test-table/");
+		WebDriverWait wait= new WebDriverWait(driver,Duration.ofSeconds(10));
+		WebElement dropDown = wait.until(ExpectedConditions.elementToBeClickable(dropdown));
+		Select dd= new Select(dropDown);
+		dd.selectByVisibleText("Enrollments");
+		
+		List<WebElement> enrollList=wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(enrollColoumn));
+	
+		
+	}
 }
