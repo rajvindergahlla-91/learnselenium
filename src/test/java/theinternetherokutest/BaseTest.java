@@ -1,5 +1,6 @@
-package testngtests;
+package theinternetherokutest;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
@@ -8,18 +9,22 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-public class BaseAlert {
+import utils.BaseUtils;
+
+public class BaseTest{
 	WebDriver driver;
 	WebDriverWait wait;
 	
 	@BeforeMethod
-	public void preReqBaseTest()
+	public void preReqBaseTest() throws NumberFormatException, IOException
 	{
 		
 	    System.out.println("I am in before Method");
+	   
 		driver = new ChromeDriver();
-		//driver.navigate().to("https://the-internet.herokuapp.com/");
-		wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+		driver.navigate().to(BaseUtils.getConfigValue("url"));
+		
+		wait = new WebDriverWait(driver,Duration.ofSeconds(Integer.valueOf(BaseUtils.getConfigValue("explicitwait"))));
 	}
 	
 	@AfterMethod
