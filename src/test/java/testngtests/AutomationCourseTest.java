@@ -14,11 +14,47 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class AutomationCourseTest {
+	
+	By java =By.xpath("//legend[text()='Language']//following::label[text()=' Java']");
+	By javaListOptions=By.xpath("//table//tr[not(contains(@style, 'display: none'))]/td[3]");
+
+	By intermediateOption =By.xpath("//legend[text()='Level']/following::label[text()=' Intermediate']");
+	By advancedOption =By.xpath("//legend[text()='Level']/following::label[text()=' Advanced']");
+	By beginnerListOptions=By.xpath("//table//tr[not(contains(@style, 'display: none'))]/td[4]");
+	
+	By dropDown=By.xpath("//legend[text()='Min enrollments']/following::div[@id='enrollDropdown']");
+	By enrollOps=By.xpath("//table//tr[not(contains(@style, 'display: none'))]/td[5]");
+	By anyOptions= By.xpath("//ul[@class='dropdown-menu']//li[text()='10,000+']");
+	
+	By pythonOp=By.xpath("//legend[text()='Language']//following-sibling::label[3]");
+	By anyOption= By.xpath("//div[@class=\"dropdown-button\"]//following-sibling::ul//li[3]");
+	By pythonTableEle=By.xpath("//table//tr[not(contains(@style, 'display:none'))]/td[3]");
+	By beginnerTableEle=By.xpath("//table//tr[not(contains(@style, 'display:none'))]/td[4]");
+	By enrollTableEle=By.xpath("//table//tr[not(contains(@style, 'display:none'))]/td[5]");
+	
+	
+	By beginner =By.xpath("//legend[text()='Level']/following-sibling::label[1]");
+	By noData=By.xpath("//div[@id='noData']");
+	
+	
+	By resetButton=By.xpath("//button[text()='Reset']");
+	By anyCheckbox=By.xpath("//legend[text()='Language']/following-sibling::label[' Any']/input[@checked]");
+	By allLevelCheckBox=By.xpath("//legend[text()='Level']/following-sibling::label/input[@checked]");
+	By enrollAny=By.xpath("//div[@class='dropdown-button']/span");
+	By rows= By.xpath("//table/tbody/tr");
+	
+	
+	By dropdown=By.xpath("//select[@id='sortBy']");
+	By enrollColoumn=By.xpath("//table/tbody/tr/td[5]");
+	
+	
+	
+	
+	
 	@Test
 	public void languageJavaTest()
 	{
-		By java =By.xpath("//legend[text()='Language']//following::label[text()=' Java']");
-		By javaListOptions=By.xpath("//table//tr[not(contains(@style, 'display: none'))]/td[3]");
+		
 		
 		WebDriver driver = new ChromeDriver();
 	    driver.navigate().to("https://practicetestautomation.com/practice-test-table/");
@@ -44,15 +80,12 @@ public class AutomationCourseTest {
 //	  }
 	  
 	    
-	    
+	    driver.quit();
 		
 	}
 	@Test
  public void levelBeginnersTest()
  {
-		By intermediateOption =By.xpath("//legend[text()='Level']/following::label[text()=' Intermediate']");
-		By advancedOption =By.xpath("//legend[text()='Level']/following::label[text()=' Advanced']");
-		By beginnerListOptions=By.xpath("//table//tr[not(contains(@style, 'display: none'))]/td[4]");
 		
 		
 		WebDriver driver = new ChromeDriver();
@@ -68,14 +101,12 @@ public class AutomationCourseTest {
 		   Assert.assertEquals(listOps,"Beginner");
 	   }
 	System.out.println("only beginner level is displayed in table");
+	 driver.quit();
 }
 	@Test
 	public void minEnrollmentTest()
 	{
 		
-		By dropDown=By.xpath("//legend[text()='Min enrollments']/following::div[@id='enrollDropdown']");
-		By enrollOps=By.xpath("//table//tr[not(contains(@style, 'display: none'))]/td[5]");
-		By anyOptions= By.xpath("//ul[@class='dropdown-menu']//li[text()='10,000+']");
 		
 		
 		WebDriver driver = new ChromeDriver();
@@ -94,19 +125,12 @@ public class AutomationCourseTest {
 	    	
 	    }
 	    System.out.println("enrollments greater than 10000 are present only");
-	    
+	    driver.quit();
 	}
 	@Test
 	public void combinedfilterTest()
 	{
-		By pythonOp=By.xpath("//legend[text()='Language']//following-sibling::label[3]");
-		By intermediateOption =By.xpath("//legend[text()='Level']/following::label[text()=' Intermediate']");
-		By advancedOption =By.xpath("//legend[text()='Level']/following::label[text()=' Advanced']");
-		By anyOptions= By.xpath("//div[@class=\"dropdown-button\"]//following-sibling::ul//li[3]");
-		By dropDown=By.xpath("//legend[text()='Min enrollments']/following::div[@id='enrollDropdown']");
-		By pythonTableEle=By.xpath("//table//tr[not(contains(@style, 'display:none'))]/td[3]");
-		By beginnerTableEle=By.xpath("//table//tr[not(contains(@style, 'display:none'))]/td[4]");
-		By enrollTableEle=By.xpath("//table//tr[not(contains(@style, 'display:none'))]/td[5]");
+		
 		
 		
 		WebDriver driver = new ChromeDriver();
@@ -117,7 +141,7 @@ public class AutomationCourseTest {
         wait.until(ExpectedConditions.elementToBeClickable(intermediateOption)).click();
 	    wait.until(ExpectedConditions.elementToBeClickable(advancedOption)).click();
 	    wait.until(ExpectedConditions.elementToBeClickable(dropDown)).click();
-	    wait.until(ExpectedConditions.elementToBeClickable(anyOptions)).click();
+	    wait.until(ExpectedConditions.elementToBeClickable(anyOption)).click();
 	    
 	    WebElement python = wait.until(ExpectedConditions.visibilityOfElementLocated(pythonTableEle));
 	    String pythonEle =python.getText();
@@ -131,15 +155,12 @@ public class AutomationCourseTest {
 	    Assert.assertEquals(beginEle, "Beginner");
 	    Assert.assertTrue(value>=10000);
 	   System.out.println("only Python Beginner courses with ≥ 10,000 enrollments are visible");
-	
+	   driver.quit();
 	
 }
 	@Test
 	public void noResultsStateTest()
 	{
-		By pythonOp=By.xpath("//legend[text()='Language']//following-sibling::label[3]");
-		By beginner =By.xpath("//legend[text()='Level']/following-sibling::label[1]");
-		By noData=By.xpath("//div[@id='noData']");
 		
 		
 		WebDriver driver = new ChromeDriver();
@@ -153,17 +174,12 @@ public class AutomationCourseTest {
 	    
 	    Assert.assertTrue(textMsg.contains("No"));
 	    System.out.println("no matching courses for this combination");
+	    driver.quit();
 	}	
 	@Test
 	public void resetButtonBehaviour()
 	{
 		
-		By java =By.xpath("//legend[text()='Language']//following::label[text()=' Java']");
-		By resetButton=By.xpath("//button[text()='Reset']");
-		By anyCheckbox=By.xpath("//legend[text()='Language']/following-sibling::label[' Any']/input[@checked]");
-		By allLevelCheckBox=By.xpath("//legend[text()='Level']/following-sibling::label/input[@checked]");
-		By enrollAny=By.xpath("//div[@class='dropdown-button']/span");
-		By rows= By.xpath("//table/tbody/tr");
 		
 		
 		WebDriver driver = new ChromeDriver();
@@ -207,13 +223,12 @@ public class AutomationCourseTest {
 		  
 	    Assert.assertTrue(yes);
 	    System.out.println("all rows are visible in table");
-	     
+	    driver.quit();
 	 }	
 	@Test
 	public void sortByEnrollmentsTest()
 	{
-		By dropdown=By.xpath("//select[@id='sortBy']");
-		By enrollColoumn=By.xpath("//table/tbody/tr/td[5]");
+		
 		
 		WebDriver driver = new ChromeDriver();
 		driver.navigate().to("https://practicetestautomation.com/practice-test-table/");
@@ -222,7 +237,7 @@ public class AutomationCourseTest {
 		Select dd= new Select(dropDown);
 		dd.selectByVisibleText("Enrollments");
 		
-		List<WebElement> enrollList=wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(enrollColoumn));
+		//List<WebElement> enrollList=wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(enrollColoumn));
 	
 		
 	}
