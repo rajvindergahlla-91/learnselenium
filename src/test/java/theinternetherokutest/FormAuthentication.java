@@ -22,6 +22,7 @@ public class FormAuthentication extends BaseTest {
 		 WelcomeToTheInternetPage welcome= new  WelcomeToTheInternetPage(wait);
 		 String header=welcome.getFormAuthPageTitle();
 		 Assert.assertTrue(header.contains("Welcome to the-internet"));
+		 System.out.println("the title is correct");
 		 welcome.clickFormAuthentication();
 			
 			
@@ -35,6 +36,7 @@ public class FormAuthentication extends BaseTest {
 		 SecureAreaPage msg= new SecureAreaPage(wait);
 	     String text=msg.getSuccessMsg();
 		Assert.assertTrue(text.contains("Secure Area"));
+		System.out.println("the heading is correct");
 		   
 	  
 	}
