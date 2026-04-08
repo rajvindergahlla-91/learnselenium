@@ -14,7 +14,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class AlertClassTest extends BaseAlert{
+
+
+public class AlertClassTest extends BaseRefTest{
 	@Test
 	public void jsAlertTest()
 	
