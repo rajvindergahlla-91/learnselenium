@@ -1,6 +1,6 @@
 package pageclasses;
 
-import java.io.IOException;
+//import java.io.IOException;
 //import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -22,7 +22,8 @@ public class WelcomeToTheInternetPage {
 	}
 	By formAuth=By.xpath("//a[text()='Form Authentication']");
 	By heading = By.className("heading");
-	
+	By dragDrop = By.xpath("//a[text()='Drag and Drop']");
+	By contextMenu=By.xpath("//a[text()='Context Menu']");
 	
 	public void clickFormAuthentication() 
 	{
@@ -36,4 +37,13 @@ public String getFormAuthPageTitle()
 	return wait.until(ExpectedConditions.visibilityOfElementLocated(heading)).getText();
 }
 
+   public void clickDragAndDrop() 
+   {
+     wait.until(ExpectedConditions.elementToBeClickable(dragDrop)).click();
+}
+   public void clickContextMenu()
+   {
+	   wait.until(ExpectedConditions.elementToBeClickable(contextMenu)).click();
+   }
+   
 }
