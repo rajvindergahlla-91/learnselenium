@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 
 import pageclasses.ContextMenuPage;
 import pageclasses.DragAndDropPage;
+import pageclasses.JavaScriptAlertPage;
 /*import pageclasses.ContextMenuPage;
 import pageclasses.DragAndDropPage;*/
 import pageclasses.LoginPagePage;
@@ -63,6 +64,19 @@ public class InternetHerokuautomationTests extends BaseTest {
 		cm.handleRightClickAlert();
 		Assert.assertEquals(msg, "You selected a context menu");
 
+	}
+	@Test
+	public void javaScriptsAlertsTest()
+	{
+		WelcomeToTheInternetPage welcome = new WelcomeToTheInternetPage();
+		welcome.clickJavaScriptAlerts();
+		
+		JavaScriptAlertPage js = new JavaScriptAlertPage();
+		String jsAlertText=js.getTextOfJsAlert();
+		Assert.assertEquals(jsAlertText,"I am a JS Alert");
+		js.clickOnClickForJsAlert();
+		js.clickOnClickForJsConfirm();
+		js.clickOnClickForJsPrompt("Raj");
 	}
 
 }

@@ -11,6 +11,7 @@ public class WelcomeToTheInternetPage {
 	private By heading = By.className("heading");
 	private By dragDrop = By.xpath("//a[text()='Drag and Drop']");
 	private By contextMenu = By.xpath("//a[text()='Context Menu']");
+	private By javaScript = By.xpath("//a[text()='JavaScript Alerts']");
 
 	public void clickFormAuthentication() {
 
@@ -29,5 +30,7 @@ public class WelcomeToTheInternetPage {
 	public void clickContextMenu() {
 		UTActionsUtils.click(contextMenu);
 	}
-
+    public void clickJavaScriptAlerts() {
+    	UTActionsUtils.click(javaScript);
+    }
 }
