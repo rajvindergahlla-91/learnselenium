@@ -75,8 +75,20 @@ public class InternetHerokuautomationTests extends BaseTest {
 		String jsAlertText=js.getTextOfJsAlert();
 		Assert.assertEquals(jsAlertText,"I am a JS Alert");
 		js.clickOnClickForJsAlert();
+		String resultText=js.getResultTextForJsAlert();
+		Assert.assertEquals(resultText,"You successfully clicked an alert");
+		
+		String jsConfirmText=js.getTextOfJsConfirm();
+		Assert.assertEquals(jsConfirmText,"I am a JS Confirm");
 		js.clickOnClickForJsConfirm();
+		String resultText1=js.getResultTextforJsConfirm();
+		Assert.assertEquals(resultText1,"You clicked: Cancel");
+
+		String jsPromptText=js.getTextOfJsPrompt();
+		Assert.assertEquals(jsPromptText,"I am a JS prompt");
 		js.clickOnClickForJsPrompt("Raj");
+		String resultText2=js.getResultTextforJsPrompt("Raj");
+		Assert.assertEquals(resultText2,"You entered: Raj");
 	}
 
 }
