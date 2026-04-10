@@ -16,7 +16,7 @@ public class WaitUtils {
 	
 	public static void initWait() throws NumberFormatException, IOException
 	{
-		 new WebDriverWait(DriverManager.getDriver(),Duration.ofSeconds
+		wait= new WebDriverWait(DriverManager.getDriver(),Duration.ofSeconds
 				                                (Integer.valueOf(BaseUtils.getConfigValue("explicitwait")))); 
 	}
 	

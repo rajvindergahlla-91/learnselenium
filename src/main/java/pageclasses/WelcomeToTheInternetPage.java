@@ -2,7 +2,8 @@ package pageclasses;
 
 import org.openqa.selenium.By;
 
-import utils.WaitUtils;
+import utils.UTActionsUtils;
+
 
 public class WelcomeToTheInternetPage {
 
@@ -13,20 +14,20 @@ public class WelcomeToTheInternetPage {
 
 	public void clickFormAuthentication() {
 
-		WaitUtils.elementToBeClicakable(formAuth).click();
+		UTActionsUtils.click(formAuth);
 	}
 
 	public String getFormAuthPageTitle() {
 
-		return WaitUtils.visibilityOfElementLocated(heading).getText();
+		return UTActionsUtils.getText(heading);
 	}
 
 	public void clickDragAndDrop() {
-		WaitUtils.elementToBeClicakable(dragDrop).click();
+		UTActionsUtils.click(dragDrop);
 	}
 
 	public void clickContextMenu() {
-		WaitUtils.elementToBeClicakable(contextMenu).click();
+		UTActionsUtils.click(contextMenu);
 	}
 
 }

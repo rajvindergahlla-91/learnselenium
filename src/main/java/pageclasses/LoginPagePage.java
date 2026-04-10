@@ -2,7 +2,8 @@ package pageclasses;
 
 import org.openqa.selenium.By;
 
-import utils.WaitUtils;
+import utils.UTActionsUtils;
+
 
 public class LoginPagePage {
 	By username = By.id("username");
@@ -10,14 +11,14 @@ public class LoginPagePage {
 	By loginButton = By.className("radius");
 
 	public void enterUsername(String name) {
-		WaitUtils.elementToBeClicakable(username).sendKeys(name);
+		UTActionsUtils.sendKeys(username, name);
 	}
 
 	public void enterPassword(String pswd) {
-		WaitUtils.elementToBeClicakable(password).sendKeys(pswd);
+		UTActionsUtils.sendKeys(password, pswd);
 	}
 
 	public void clickLoginButton() {
-		WaitUtils.elementToBeClicakable(loginButton).click();
+		UTActionsUtils.click(loginButton);
 	}
 }

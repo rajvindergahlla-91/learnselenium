@@ -17,7 +17,7 @@ public class DriverManager {
 		String browser =BaseUtils.getConfigValue("browser");
 		switch (browser.toLowerCase()) {
 		
-		case "Chrome":
+		case "chrome":
 		driver=new ChromeDriver();
 		break;
 		
@@ -25,7 +25,7 @@ public class DriverManager {
 		driver=new FirefoxDriver();
 		break;
 		
-		case "Edge":
+		case "edge":
 		driver=new EdgeDriver();
 		break;
 			
@@ -43,7 +43,7 @@ public static WebDriver getDriver() {
 public static void  quitDriver() {
 	driver.quit();
 }
-public static void  goToUrl(String url)
+public static void  goToUrl(String url) throws IOException
 {
 	driver.get(url);
 }

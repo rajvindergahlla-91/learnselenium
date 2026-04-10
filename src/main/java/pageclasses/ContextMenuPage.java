@@ -2,18 +2,19 @@ package pageclasses;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+import manger.DriverManager;
 import utils.WaitUtils;
 
 public class ContextMenuPage {
 	By clickBox = By.id("hot-spot");
 
-	public void rightClickOnBox(WebDriver driver) {
+	public void rightClickOnBox() {
+		DriverManager.getDriver();
 		WebElement box = WaitUtils.elementToBeClicakable(clickBox);
-		Actions act = new Actions(driver);
+		Actions act = new Actions(DriverManager.getDriver());
 		act.contextClick(box).perform();
 	}
 
