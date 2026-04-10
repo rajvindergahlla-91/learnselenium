@@ -6,9 +6,9 @@ import utils.UTActionsUtils;
 
 
 public class LoginPagePage {
-	By username = By.id("username");
-	By password = By.id("password");
-	By loginButton = By.className("radius");
+	private By username = By.id("username");
+	private By password = By.id("password");
+	private By loginButton = By.className("radius");
 
 	public void enterUsername(String name) {
 		UTActionsUtils.sendKeys(username, name);

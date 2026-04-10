@@ -9,7 +9,7 @@ import manger.DriverManager;
 import utils.WaitUtils;
 
 public class ContextMenuPage {
-	By clickBox = By.id("hot-spot");
+	private By clickBox = By.id("hot-spot");
 
 	public void rightClickOnBox() {
 		DriverManager.getDriver();

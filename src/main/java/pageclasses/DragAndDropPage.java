@@ -12,9 +12,9 @@ import utils.WaitUtils;
 public class DragAndDropPage {
 
 
-	By columnA = By.id("column-a");
-	By columnB = By.id("column-b");
-	By columnBHeaderA = By.xpath("//div[@id='column-b']/header[text()='A']");
+	private By columnA = By.id("column-a");
+	private By columnB = By.id("column-b");
+	private By columnBHeaderA = By.xpath("//div[@id='column-b']/header[text()='A']");
 
 	public void dragBoxes() {
 		DriverManager.getDriver();

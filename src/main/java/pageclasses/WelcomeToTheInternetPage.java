@@ -7,10 +7,10 @@ import utils.UTActionsUtils;
 
 public class WelcomeToTheInternetPage {
 
-	By formAuth = By.xpath("//a[text()='Form Authentication']");
-	By heading = By.className("heading");
-	By dragDrop = By.xpath("//a[text()='Drag and Drop']");
-	By contextMenu = By.xpath("//a[text()='Context Menu']");
+	private By formAuth = By.xpath("//a[text()='Form Authentication']");
+	private By heading = By.className("heading");
+	private By dragDrop = By.xpath("//a[text()='Drag and Drop']");
+	private By contextMenu = By.xpath("//a[text()='Context Menu']");
 
 	public void clickFormAuthentication() {
 
