@@ -19,22 +19,27 @@ public class DriverManager {
 		
 		case "chrome":
 		driver=new ChromeDriver();
+		ExtentTestManager.log.info("Browser launched successfully");
 		break;
 		
 		case "firefox":
 		driver=new FirefoxDriver();
+		ExtentTestManager.log.info("firefox launched successfully");
 		break;
 		
 		case "edge":
 		driver=new EdgeDriver();
+		ExtentTestManager.log.info("edge launched successfully");
 		break;
 			
 		
 		default:
 		System.out.println("browser not supported");
+		ExtentTestManager.log.info("Browser not found");
 		break;
 	}
 		driver.manage().window().maximize();
+		ExtentTestManager.log.info("browser maximised");
 	}
 public static WebDriver getDriver() {
 	return driver;
@@ -42,10 +47,12 @@ public static WebDriver getDriver() {
 
 public static void  quitDriver() {
 	driver.quit();
+	ExtentTestManager.log.info("window closed successfully");
 }
 public static void  goToUrl(String url) throws IOException
 {
 	driver.get(url);
+	ExtentTestManager.log.info("URL" + url + "opened");
 }
 
 	

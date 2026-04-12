@@ -12,24 +12,24 @@ public class JavaScriptAlertPage {
 	private By jsResult = By.id("result");
 
 	public void clickOnClickForJsAlert() {
-		UTActionsUtils.click(JsAlert);
+		UTActionsUtils.click(JsAlert, "JS Alert");
 	    WaitUtils.alertIsPresent().accept();
 	}
 
 	
 	public void clickOnClickForJsConfirm() {
-		UTActionsUtils.click(JsConfirm);
+		UTActionsUtils.click(JsConfirm," JS Confirm Alert");
 		WaitUtils.alertIsPresent().dismiss();
 	}
 
 	public void clickOnClickForJsPrompt(String name) {
-		UTActionsUtils.click(JsPrompt);
+		UTActionsUtils.click(JsPrompt, "JS Prompt Alert");
 		WaitUtils.alertIsPresent().sendKeys(name);
 		WaitUtils.alertIsPresent().accept();
 
 	}
 	public String getTextOfJsAlert() {
-		 UTActionsUtils.click(JsAlert);
+		 UTActionsUtils.click(JsAlert, " JS Alert Text");
 		    String text = WaitUtils.alertIsPresent().getText();
 		    WaitUtils.alertIsPresent().accept();  // ⭐ MUST CLOSE ALERT
 		    return text;
@@ -37,14 +37,14 @@ public class JavaScriptAlertPage {
 	}
 	public String getTextOfJsConfirm()
 	{
-		UTActionsUtils.click(JsConfirm);
+		UTActionsUtils.click(JsConfirm," JS Confirm Alert Text");
 		String text1=WaitUtils.alertIsPresent().getText();
 		WaitUtils.alertIsPresent().accept();
 		return text1;
 	}
 	public String getTextOfJsPrompt()
 	{
-		UTActionsUtils.click(JsPrompt);
+		UTActionsUtils.click(JsPrompt,"JS Prompt Alert Text");
 		String text2=WaitUtils.alertIsPresent().getText();
 		WaitUtils.alertIsPresent().accept();
 		return text2;
@@ -52,20 +52,20 @@ public class JavaScriptAlertPage {
 	
 	public String getResultTextForJsAlert()
 	{
-		UTActionsUtils.click(JsAlert);
+		UTActionsUtils.click(JsAlert, "JS Alert Result");
 	    WaitUtils.alertIsPresent().accept();
 	  return  WaitUtils.visibilityOfElementLocated(jsResult).getText();
 	}
 	public String getResultTextforJsConfirm()
 	{
-		UTActionsUtils.click(JsConfirm);
+		UTActionsUtils.click(JsConfirm," JS Confirm Alert Result");
 		WaitUtils.alertIsPresent().dismiss();
 		return WaitUtils.visibilityOfElementLocated(jsResult).getText();
 		
 	}
 	public String getResultTextforJsPrompt(String name)
 	{
-		UTActionsUtils.click(JsPrompt);
+		UTActionsUtils.click(JsPrompt,"JS Prompt Alert Result");
 	    WaitUtils.alertIsPresent().sendKeys(name);
 	    WaitUtils.alertIsPresent().accept();
 		return WaitUtils.visibilityOfElementLocated(jsResult).getText();

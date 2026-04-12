@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 import manger.ExtentTestManager;
 import utils.UTActionsUtils;
 
-
 public class WelcomeToTheInternetPage {
 
 	private By formAuth = By.xpath("//a[text()='Form Authentication']");
@@ -16,29 +15,29 @@ public class WelcomeToTheInternetPage {
 
 	public void clickFormAuthentication() {
 
-		UTActionsUtils.click(formAuth);
-		ExtentTestManager.log.info("clicked Form Authentication");
+		UTActionsUtils.click(formAuth, "Form Authentication");
+
 	}
 
-	public String getFormAuthPageTitle() {
-		
+	public String getFormAuthPageTitle(String nameOfTheElement) {
 
-		String titleText=UTActionsUtils.getText(heading);
-		ExtentTestManager.log.info("Title text");
+		String titleText = UTActionsUtils.getText(heading, nameOfTheElement);
+		ExtentTestManager.log.info("Title text is :" + titleText);
 		return titleText;
 	}
 
 	public void clickDragAndDrop() {
-		UTActionsUtils.click(dragDrop);
-		ExtentTestManager.log.info("clicked Drag and Drop");
+		UTActionsUtils.click(dragDrop, "Drag and Drop");
+
 	}
 
 	public void clickContextMenu() {
-		UTActionsUtils.click(contextMenu);
-		ExtentTestManager.log.info("clicked context menu");
+		UTActionsUtils.click(contextMenu, "context menu");
+
 	}
-    public void clickJavaScriptAlerts() {
-    	UTActionsUtils.click(javaScript);
-    	ExtentTestManager.log.info("clicked javaScript Alerts");
-    }
+
+	public void clickJavaScriptAlerts() {
+		UTActionsUtils.click(javaScript, "javaScript Alerts");
+
+	}
 }

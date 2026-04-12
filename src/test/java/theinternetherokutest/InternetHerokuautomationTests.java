@@ -22,7 +22,7 @@ public class InternetHerokuautomationTests extends BaseTest {
 
 	{
 		WelcomeToTheInternetPage welcome = new WelcomeToTheInternetPage();
-		String header = welcome.getFormAuthPageTitle();
+		String header = welcome.getFormAuthPageTitle("Form Authencation Page title");
 		Assert.assertTrue(header.contains("Welcome to the-internet"));
 		System.out.println("the title is correct");
 		welcome.clickFormAuthentication();
@@ -33,7 +33,7 @@ public class InternetHerokuautomationTests extends BaseTest {
 		login.clickLoginButton();
 
 		SecureAreaPage msg = new SecureAreaPage();
-		String text = msg.getSuccessMsg();
+		String text = msg.getSuccessMsg("Secure page Title");
 		Assert.assertTrue(text.contains("Secure Area"));
 		System.out.println("the heading is correct");
 
@@ -47,7 +47,7 @@ public class InternetHerokuautomationTests extends BaseTest {
 		DragAndDropPage dd = new DragAndDropPage();
 		dd.dragBoxes();
 
-		String position = dd.getPositionAfterDrag();
+		String position = dd.getPositionAfterDrag("updated text");
 		Assert.assertTrue(position.contains("A"));
 		System.out.println("position verified");
 	}

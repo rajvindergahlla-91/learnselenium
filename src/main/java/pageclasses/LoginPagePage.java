@@ -15,10 +15,10 @@ public class LoginPagePage {
 	}
 
 	public void enterPassword(String pswd) {
-		UTActionsUtils.sendKeys(password, pswd);
+		UTActionsUtils.sendPswd(password, pswd);
 	}
 
 	public void clickLoginButton() {
-		UTActionsUtils.click(loginButton);
+		UTActionsUtils.click(loginButton, "Login Button");
 	}
 }

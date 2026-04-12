@@ -24,7 +24,7 @@ public class DragAndDropPage {
 		act.dragAndDrop(boxA, boxB).perform();
 	}
 
-	public String getPositionAfterDrag() {
-		return UTActionsUtils.getText(columnBHeaderA);
+	public String getPositionAfterDrag(String nameOfTheElement) {
+		return UTActionsUtils.getText(columnBHeaderA, nameOfTheElement);
 	}
 }

@@ -8,7 +8,7 @@ public class SecureAreaPage {
 
 	private By header = By.tagName("h2");
 
-	public String getSuccessMsg() {
-		return UTActionsUtils.getText(header);
+	public String getSuccessMsg(String nameOfTheElement) {
+		return UTActionsUtils.getText(header,nameOfTheElement);
 	}
 }
