@@ -88,7 +88,7 @@ public class InternetHerokuautomationTests extends BaseTest {
 		Assert.assertEquals(jsPromptText,"I am a JS prompt");
 		js.clickOnClickForJsPrompt("Raj");
 		String resultText2=js.getResultTextforJsPrompt("Raj");
-		Assert.assertEquals(resultText2,"You entered: Raj");
+		Assert.assertEquals(resultText2,"You entered: JAR");
 	}
 
 }
