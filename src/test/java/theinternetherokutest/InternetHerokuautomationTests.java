@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 
 import pageclasses.ContextMenuPage;
 import pageclasses.DragAndDropPage;
+import pageclasses.DropDownPage;
 import pageclasses.JavaScriptAlertPage;
 /*import pageclasses.ContextMenuPage;
 import pageclasses.DragAndDropPage;*/
@@ -65,30 +66,39 @@ public class InternetHerokuautomationTests extends BaseTest {
 		Assert.assertEquals(msg, "You selected a context menu");
 
 	}
+
 	@Test
-	public void javaScriptsAlertsTest()
-	{
+	public void javaScriptsAlertsTest() {
 		WelcomeToTheInternetPage welcome = new WelcomeToTheInternetPage();
 		welcome.clickJavaScriptAlerts();
-		
-		JavaScriptAlertPage js = new JavaScriptAlertPage();
-		String jsAlertText=js.getTextOfJsAlert();
-		Assert.assertEquals(jsAlertText,"I am a JS Alert");
-		js.clickOnClickForJsAlert();
-		String resultText=js.getResultTextForJsAlert();
-		Assert.assertEquals(resultText,"You successfully clicked an alert");
-		
-		String jsConfirmText=js.getTextOfJsConfirm();
-		Assert.assertEquals(jsConfirmText,"I am a JS Confirm");
-		js.clickOnClickForJsConfirm();
-		String resultText1=js.getResultTextforJsConfirm();
-		Assert.assertEquals(resultText1,"You clicked: Cancel");
 
-		String jsPromptText=js.getTextOfJsPrompt();
-		Assert.assertEquals(jsPromptText,"I am a JS prompt");
+		JavaScriptAlertPage js = new JavaScriptAlertPage();
+		String jsAlertText = js.getTextOfJsAlert();
+		Assert.assertEquals(jsAlertText, "I am a JS Alert");
+		js.clickOnClickForJsAlert();
+		String resultText = js.getResultTextForJsAlert();
+		Assert.assertEquals(resultText, "You successfully clicked an alert");
+
+		String jsConfirmText = js.getTextOfJsConfirm();
+		Assert.assertEquals(jsConfirmText, "I am a JS Confirm");
+		js.clickOnClickForJsConfirm();
+		String resultText1 = js.getResultTextforJsConfirm();
+		Assert.assertEquals(resultText1, "You clicked: Cancel");
+
+		String jsPromptText = js.getTextOfJsPrompt();
+		Assert.assertEquals(jsPromptText, "I am a JS prompt");
 		js.clickOnClickForJsPrompt("Raj");
-		String resultText2=js.getResultTextforJsPrompt("Raj");
-		Assert.assertEquals(resultText2,"You entered: Raj");
+		String resultText2 = js.getResultTextforJsPrompt("Raj");
+		Assert.assertEquals(resultText2, "You entered: Raj");
 	}
 
+	@Test
+	public void dropDownTest() {
+		WelcomeToTheInternetPage welcome = new WelcomeToTheInternetPage();
+		welcome.clickDropDown();
+		
+		DropDownPage ddp= new DropDownPage();
+		ddp.clickOnDropDownBar();
+
+	}
 }
