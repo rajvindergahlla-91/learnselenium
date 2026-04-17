@@ -21,7 +21,7 @@ public class UTActionsUtils {
 		ExtentTestManager.log.info("Entered password is :" + "*******");
 	}
 	public static void click(By locator, String text) {
-		WaitUtils.elementToBeClicakable(locator).click();
+		JSUtils.jsClick(WaitUtils.elementToBeClicakable(locator));
 		ExtentTestManager.log.info("click on " + text);
 	}
 }

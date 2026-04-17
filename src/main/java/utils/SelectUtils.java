@@ -7,6 +7,7 @@ public class SelectUtils {
 
 	private static Select dd;
 
+	
 	public static void selectByIndex(WebElement ele, int index) {
 		dd = new Select(ele);
 		dd.selectByIndex(index);
