@@ -21,7 +21,7 @@ public class SecondLargestNumbInArray {
 				large=secLarge;
 				large=arr[i];
 			}
-			else if(arr[i]> secLarge && arr[i]!=large) {
+			else if(arr[i]> secLarge && arr[i]<large) {
 				secLarge=arr[i];
 			}
 		}

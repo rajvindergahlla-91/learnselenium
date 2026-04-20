@@ -31,7 +31,7 @@ public class JavaScriptAlertPage {
 	public String getTextOfJsAlert() {
 		 UTActionsUtils.click(JsAlert, " JS Alert Text");
 		    String text = WaitUtils.alertIsPresent().getText();
-		    WaitUtils.alertIsPresent().accept();  // ⭐ MUST CLOSE ALERT
+		    WaitUtils.alertIsPresent().accept();  //  MUST CLOSE ALERT
 		    return text;
 	    
 	}

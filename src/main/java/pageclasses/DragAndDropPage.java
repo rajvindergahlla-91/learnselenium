@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import manger.DriverManager;
+import manger.ExtentTestManager;
 import utils.UTActionsUtils;
 import utils.WaitUtils;
 
@@ -22,6 +23,7 @@ public class DragAndDropPage {
 		WebElement boxB = WaitUtils.visibilityOfElementLocated(columnB);
 		Actions act = new Actions(DriverManager.getDriver());
 		act.dragAndDrop(boxA, boxB).perform();
+		ExtentTestManager.log.info("the boxes are dragged successfully");
 	}
 
 	public String getPositionAfterDrag(String nameOfTheElement) {
