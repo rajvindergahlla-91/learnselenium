@@ -8,5 +8,9 @@ public static void main(String[] args)
 	iv.emergencyBrakes();
 	Honda hn= new Honda();
 	hn.honk();
+	System.out.println("the color is : " + IVehicle.colorOfVehicle);
+	//IVehicle.colorOfVehicle= "Red";
+
+	
 }
 }
