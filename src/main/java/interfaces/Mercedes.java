@@ -16,9 +16,5 @@ public class Mercedes implements IVehicle {
 	public void move() {
 		System.out.println("merc moves");
 	}
-//	public void break()
-//	{
-//		
-//	}
 
 }

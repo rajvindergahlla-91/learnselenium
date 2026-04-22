@@ -1,6 +1,6 @@
 package interfaces;
 
-public class Honda implements IVehicle {
+public class Honda implements IVehicle,IShip,IAirplane {
 
 	public void run() {
 		System.out.println("honda runs");
@@ -20,5 +20,11 @@ public class Honda implements IVehicle {
 
 	public void honk() {
 		System.out.println("honda honks");
+	}
+	public void emergencyBrakes()
+	{
+		IVehicle.super.emergencyBrakes();
+		IShip.super.emergencyBrakes();
+		IAirplane.super.emergencyBrakes();
 	}
 }
