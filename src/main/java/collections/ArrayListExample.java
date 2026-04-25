@@ -1,7 +1,7 @@
 package collections;
 
 import java.util.ArrayList;
-import java.util.List;
+//import java.util.List;
 
 public class ArrayListExample {
 
@@ -14,17 +14,20 @@ public class ArrayListExample {
 		aList.add("Puneet");
 		aList.add("Riya");                     // Takes Duplicates
 		aList.add("Minarv");
+		aList.add(null);
 		aList.add("vitaharya");
+		aList.add(null);
 		aList.add("Asha");                        // maintains order
 		aList.add("Riya");
 
 		// Read
+		System.out.println(aList);
 		System.out.println(" The name of 3rd member is : " + aList.get(5));
 
 		// Update
 
 		aList.set(4, "Divya");
-		System.out.println(aList);                // doesnot gives Null
+		System.out.println(aList);                // allow null values
 
 		// Delete
 		aList.remove(4);

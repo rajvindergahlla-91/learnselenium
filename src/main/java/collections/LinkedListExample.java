@@ -1,6 +1,6 @@
 package collections;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class LinkedListExample {
@@ -30,7 +30,7 @@ public class LinkedListExample {
 		lList.remove(3);
 		System.out.println(lList.get(3));
 
-		// Read all elements                    // doesnot gives Null value but shifts the elements towards left
+		// Read all elements                    // allows null value
 		for (String name : lList)
 			System.out.println(name);
 
