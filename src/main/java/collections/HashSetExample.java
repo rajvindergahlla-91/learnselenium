@@ -16,7 +16,8 @@ public class HashSetExample {
 		hs.add("Ankita");
 
 		// read
-		System.out.println(hs);    // doesnot maintains order of insertion.
+		System.out.println(hs);
+		System.out.println(hs.contains("Nirmal") );        // doesnot maintains order of insertion.
 
 		// read all
 		for (String name : hs)     // no direct update operation
