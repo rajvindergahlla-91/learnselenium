@@ -1,9 +1,6 @@
 package testngtests;
 
-//import java.time.Duration;
-//import java.util.List;
 
-//import org.jspecify.annotations.Nullable;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 //import org.openqa.selenium.WebDriver;
