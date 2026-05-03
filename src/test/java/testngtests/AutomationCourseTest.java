@@ -29,7 +29,7 @@ public class AutomationCourseTest {
 	By anyOptions = By.xpath("//ul[@class='dropdown-menu']//li[text()='10,000+']");
 
 	By pythonOp = By.xpath("//legend[text()='Language']//following-sibling::label[3]");
-	By anyOption = By.xpath("//div[@class=\"dropdown-button\"]//following-sibling::ul//li[3]");
+	By anyOption = By.xpath("//div[@class='dropdown-button']//following-sibling::ul//li[3]");
 	By pythonTableEle = By.xpath("//table//tr[not(contains(@style, 'display:none'))]/td[3]");
 	By beginnerTableEle = By.xpath("//table//tr[not(contains(@style, 'display:none'))]/td[4]");
 	By enrollTableEle = By.xpath("//table//tr[not(contains(@style, 'display:none'))]/td[5]");
