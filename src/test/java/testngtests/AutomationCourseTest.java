@@ -162,7 +162,7 @@ public class AutomationCourseTest {
 	}
 
 	@Test
-	public void resetButtonBehaviour() {
+	public void resetButtonVisibilityAndBehaviour() {
 
 		WebDriver driver = new ChromeDriver();
 		driver.navigate().to("https://practicetestautomation.com/practice-test-table/");
